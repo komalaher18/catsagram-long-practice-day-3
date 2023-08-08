@@ -10,14 +10,19 @@ export const createMainContent = () => {
     const img = document.createElement("img");
     img.style.margin = "20px";
     img.style.maxWidth = "750px";
-
+    
+    console.log(img);
+    // img.setAttribute("id", "image");
+    
+    
+    
     const newKittenBtn = createNewKittenBtn();
-
+    
     const container = document.querySelector(".container");
     container.appendChild(h1);
     container.append(newKittenBtn);
     container.appendChild(img);
-
+    
     fetchImage();
 };
 
@@ -31,11 +36,13 @@ const fetchImage = async () => {
         const kittenImgUrl = kittenData[0].url;
         const kittenImg = document.querySelector("img");
         kittenImg.src = kittenImgUrl;
-
+        
+        localStorage.setItem('img', `${kittenImg.src}`);
         // After the image is finished loading, reset the score and comments
         kittenImg.addEventListener('load', () => {
             resetScore();
             resetComments();
+           
         });
     } catch (e) {
         console.log("Failed to fetch image", e);

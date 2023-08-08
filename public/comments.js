@@ -87,7 +87,7 @@ const createComment = (commentText) => {
 
     const newComment = document.createElement("p");
     newComment.innerText = commentText;
-
+    localStorage.setItem("comment-New", `${commentText}`);
     const deleteButton = document.createElement('button');
     deleteButton.className = "delete-button";
     deleteButton.style.marginLeft = "15px";
@@ -95,6 +95,7 @@ const createComment = (commentText) => {
     deleteButton.addEventListener('click', e => {
         // Remove comment from HTML DOM
         newCommentContainer.remove();
+        localStorage.removeItem("comment-New");
     });
 
     newCommentContainer.appendChild(newComment);

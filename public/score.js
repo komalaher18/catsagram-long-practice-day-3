@@ -78,4 +78,5 @@ export const resetScore = () => {
 const updateScore = (newScore) => {
     const score = document.querySelector('.score');
     score.innerText = newScore;
+    localStorage.setItem("score", `${newScore}`);
 };
